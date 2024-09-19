@@ -5,6 +5,9 @@ import HomeEight from "./components/signup.jsx";
 import ForgotPasswordPage from "./components/forgotPassword.jsx";
 import DashboardLayout from "./pages/dashboardLayout";
 import DashboardPage from "./pages/dashboard.jsx";
+import PieAnalytics from "./components/analytics.jsx";
+import Discover from "./components/discover.jsx";
+import SavedPropertyPage from "./components/savedProperties.jsx";
 // import DiscoverPage from "./pages/discover.jsx";
 // import SavedPropertyPage from "./pages/savedProperty.jsx"; 
 
@@ -21,9 +24,9 @@ function App() {
         {/* Dashboard Routes with Sidebar and Header */}
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardPage />} />  
-          <Route path="discover" element={<div>Discover</div>} /> 
-          <Route path="saved-property" element={<div>Saved-Property</div>} />  
-         
+          <Route path="discover" element={<Discover/>} /> 
+          <Route path="saved-property" element={<SavedPropertyPage/>} />  
+          <Route path="analytics" element={<PieAnalytics />} />  
         </Route>
       </Routes>
     </Router>
