@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaFacebook, FaGoogle, FaApple } from "react-icons/fa";
 import BricksFi from '../assets/bricksfi.png'
 import LoginImage from './../assets/login-image.webp';
 import { Link } from "react-router-dom";
@@ -11,7 +10,7 @@ import { BrCookies, CookieData, createCookieDate } from "../utils/storage/cookie
 const LoginPage = () => {
   
   const { post } = useAPI();
-  const { get: getAccount } = useAPI();
+  //const { get: getAccount } = useAPI();
   const [disableButton, setDisableButton] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -42,6 +41,9 @@ const LoginPage = () => {
           } else {
             window.location.reload();
           }
+      }
+      else {
+        showErrorToast(response["message"]);
       }
     }
     catch(error){
