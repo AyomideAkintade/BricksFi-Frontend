@@ -1,0 +1,19 @@
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
+
+export default function Verify(){
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [ email, setEmail ] = useState(null);
+
+    useEffect(()=>{
+        if(location.state){
+            setEmail(location.state.email);
+        }
+        else {
+            navigate("/signup")
+        }
+    }, [location])
+
+    return <></>
+}
