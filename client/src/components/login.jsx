@@ -1,144 +1,107 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaFacebook, FaGoogle, FaApple } from "react-icons/fa";
 import BricksFi from '../assets/bricksfi.png'
-import LoginImage from './../assets/login-image.webp';
-import { Link } from "react-router-dom";
-import useAPI from "../hooks/useApi";
-import { isEmpty, isValidEmail } from "../utils/functions";
-import { showErrorToast } from "../utils/toast";
-import { BrCookies, CookieData, createCookieDate } from "../utils/storage/cookies";
+import Wall from '../assets/wall.jpg'
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  
-  const { post } = useAPI();
-  const { get: getAccount } = useAPI();
-  const [disableButton, setDisableButton] = useState(false);
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-
-    const email = formData.get('email');
-    const password = formData.get("password");
-
-    if(!isValidEmail(email) || isEmpty(password) || password.length < 8) {
-      showErrorToast("Invalid username or password");
-      return;
-    }
-
-    setDisableButton(true);
-    try {
-      const response = await post('auth/login', formData, false, true);
-      if(response['success']){
-        const data = response['data'];
-        const jtCookies = new BrCookies(document);
-        const authCookie = new CookieData('authToken', data["token"], createCookieDate(data["expires_in"]));
-
-          jtCookies.saveCookies( [authCookie] );
-
-          
-          if(window.location.pathname === "/login"){
-            window.location = window.location.origin;
-          } else {
-            window.location.reload();
-          }
-      }
-    }
-    catch(error){
-      console.error(error);
-      showErrorToast("An error occured while trying to login");
-    }
-    finally {
-      setDisableButton(false);
-    }
+  const handleSignUpClick = () => {
+    navigate("/signup"); 
+  };
+  const handleLoginClick = () => {
+    navigate("/dashboard"); 
+  };
+  const forgotPassword = () => {
+    navigate("/forgot-password"); 
   };
   return (
-    <div className="min-h-screen bg-white font-Poppins">
-      <div className="bg-white rounded-lg w-full flex md:flex-row">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white shadow-lg rounded-lg max-w-4xl w-full flex flex-col md:flex-row overflow-hidden">
         {/* Left side: Form section */}
-        <div className="w-full p-8">
-          <div className="">
+        <div className="w-full md:w-1/2 p-8">
+          <div className="flex items-center mb-8">
             <img
               src={ BricksFi}
               alt="BricksFi Logo"
-              className="w-32 mr-2"
+              className="h-8 mr-2"
             />
             {/* <h1 className="text-2xl font-bold text-yellow-500">BricksFi</h1> */}
           </div>
 
-          <div className="flex p-12 w-full items-center">
+          <h2 className="text-3xl font-semibold mb-4">Login</h2>
+          <p className="text-gray-500 mb-6">Login to access your travelwise account</p>
 
-          <div className="w-1/2 px-12 py-7 flex flex-col gap-6 text-[#313131]">
-            <div className="flex flex-col gap-4">
-              <div className="text-3xl font-bold">Login</div>
-              <div className="text-[#3131318c] text-base">Login to access your bricks account</div>
+          <form>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-2">Email</label>
+              <input
+                type="email"
+                placeholder="john.doe@gmail.com"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-2">Password</label>
+              <input
+                type="password"
+                placeholder="••••••••••••"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
             </div>
 
-            <form className="flex flex-col gap-6" onSubmit={(e)=>handleSubmit(e)}>
-              <div className="">
-                <label className="block text-sm font-medium mb-2">Email</label>
+            <div className="flex items-center justify-between mb-6">
+              <label className="flex items-center">
                 <input
-                  type="email"
-                  name="email"
-                  placeholder="john.doe@gmail.com"
-                  className="w-full px-4 py-3 border-[1px] text-sm rounded-md outline-none border-[#79747E]"
+                  type="checkbox"
+                  className="form-checkbox text-yellow-500"
                 />
-              </div>
-              <div className="">
-                <label className="block text-sm mb-2">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="••••••••••••"
-                  className="w-full px-4 py-3 border-[1px] rounded-md outline-none border-[#79747E]"
-                />
-              </div>
+                <span className="ml-2 text-sm text-gray-600">Remember me</span>
+              </label>
+              <a onClick={forgotPassword} href="#" className="text-sm text-red-500 hover:underline">
+                Forgot Password
+              </a>
+            </div>
 
-              
+            <button  onClick={handleLoginClick} className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-600 transition duration-200">
+              Login
+            </button>
+          </form>
 
-              <button type="submit" className="w-full bg-[#E4AA15] text-white py-3 rounded-md  transition duration-200 cursor-pointer disabled:bg-gray-700" disabled={disableButton}>
-                Login
+          <div className="mt-4 text-center">
+            <p className="text-sm text-gray-500">
+              Don’t have an account?{" "}
+              <a onClick={handleSignUpClick} href="#" className="text-red-500 hover:underline">
+                Sign up
+              </a>
+            </p>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-500 mb-4">Or login with</p>
+            <div className="flex justify-center space-x-4">
+              <button className="p-2 border rounded-full text-yellow-500 hover:bg-gray-100 transition duration-200">
+                <FaFacebook size={20} />
               </button>
-            </form>
-
-            <div className="flex flex-col  gap-8">
-              <div className="">
-                <div className="text-sm text-[#313131] space-x-[0.5]">
-                  <span>Don’t have an account?</span> <Link to={"/signup"} className="text-red-500">Sign up</Link>
-                </div>
-              </div>
-              {/* <div className="relative w-full flex flex-col items-center">
-                <div className="absolute w-full h-[1px] bg-[#31313149] top-[50%]"></div>
-                <div className="text-sm text-[#3131317d] bg-white px-4 z-[1]">or login with</div>
-              </div>
-              <div className="flex justify-center gap-6 w-full">
-                <button className="py-4 border-[1px] border-[#E4AA15] w-full rounded-md text-yellow-500 cursor-pointer flex items-center justify-center">
-                  <FaFacebook size={20} />
-                </button>
-                <button className="py-4  border-[1px] border-[#E4AA15] rounded-md w-full text-yellow-500  cursor-pointer flex items-center justify-center">
-                  <FaGoogle size={20} />
-                </button>
-                <button className="py-4  border-[1px] border-[#E4AA15] rounded-md w-full text-yellow-500  cursor-pointer flex items-center justify-center">
-                  <FaApple size={20} />
-                </button>
-              </div> */}
+              <button className="p-2 border rounded-full text-yellow-500 hover:bg-gray-100 transition duration-200">
+                <FaGoogle size={20} />
+              </button>
+              <button className="p-2 border rounded-full text-yellow-500 hover:bg-gray-100 transition duration-200">
+                <FaApple size={20} />
+              </button>
             </div>
           </div>
+        </div>
 
-                  {/* Right side: Image section */}
-          <div className="w-1/2 p-2 flex justify-center">
-            <img
-              src={LoginImage}
-              alt="Secure Login Illustration"
-              className="w-3/4"
-            />
-          </div>
-
-          </div>
-
-          </div>
-
-
+        {/* Right side: Image section */}
+        <div className="hidden md:block w-full md:w-1/2 bg-gray-50 p-8 flex items-center justify-center">
+          <img
+            src=''
+            alt="Secure Login Illustration"
+            className="max-w-full h-auto"
+          />
+        </div>
       </div>
     </div>
   );
