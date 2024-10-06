@@ -17,27 +17,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Hamburger Menu for Mobile */}
-        <div className="md:hidden flex items-center space-x-4">
-          {/* Light/Dark Mode Toggle */}
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 border rounded-full focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-600"
-          >
-            {darkMode ? (
-              <FaSun size={20} className="text-yellow-500" />
-            ) : (
-              <FaMoon size={20} className="text-gray-800" />
-            )}
-          </button>
-          {/* Hamburger Icon */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="focus:outline-none"
-          >
-            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
-        </div>
+        
 
         {/* Navigation Links for Desktop */}
         <div className={`md:flex space-x-6 items-center hidden`}>
@@ -49,19 +29,10 @@ const Navbar = () => {
 
         {/* Light/Dark Mode Toggle and Launch App Button for Desktop */}
         <div className="hidden md:flex items-center space-x-4">
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 border rounded-full focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-600"
-          >
-            {darkMode ? (
-              <FaSun size={20} className="text-yellow-500" />
-            ) : (
-              <FaMoon size={20} className="text-gray-800" />
-            )}
-          </button>
-          <button className="px-4 py-2 bg-[#E4AA15] text-white rounded-md hover:bg-yellow-600">
+          
+          <Link to="/login" className="px-4 py-2 bg-[#E4AA15] text-white rounded-md hover:bg-yellow-600">
             Launch
-          </button>
+          </Link>
         </div>
       </div>
 
