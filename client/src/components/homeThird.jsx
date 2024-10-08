@@ -26,9 +26,9 @@ const TokenDistribution = () => {
           {/* Right Section */}
           <div className="flex-1 p-4 bg-white shadow-lg rounded-lg mb-4 md:mb-0 md:ml-4">
             <img src={tokenImage} alt="Token distribution" className="w-full h-auto object-cover mb-4 rounded-md" />
-            <p className="font-inter text-sm md:text-md text-gray-600">
+            {/* <p className="font-inter text-sm md:text-md text-gray-600">
               Smart Contract: Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur. Blanet non eu molestie sit urna cursus.
-            </p>
+            </p> */}
           </div>
         </div>
   

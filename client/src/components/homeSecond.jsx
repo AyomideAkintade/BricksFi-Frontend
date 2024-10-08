@@ -11,7 +11,7 @@ const HomeSecond = () => {
           Discover the power of integrating blockchain in real estate investment
         </h4>
         <p className="text-sm md:text-base font-normal text-gray-600">
-          Leverage your assets like never before with the power of Decentralized finance on the blockchain. Lorem ipsum dolor sit amet consectetur. Mi neque ac sagittis suscipit ipsum sed dictum arcu nulla. Nulla arcu adipiscing lacus cursus quisque facilisi et aliquam. Nulla sit fringilla elementum potenti ultrices ullamcorper. Sed viverra sociis non vel nisl.
+          Leverage your assets like never before with the power of Decentralized finance on the blockchain.
         </p>
       </div>
 

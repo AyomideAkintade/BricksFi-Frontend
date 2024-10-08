@@ -49,9 +49,9 @@ const homeSeventh = () => {
                 </ul>
               </div>
             </div>
-    
+            <div></div>
             {/* Right section with newsletter */}
-            <div className="flex flex-col w-full md:w-auto">
+            {/* <div className="flex flex-col w-full md:w-auto">
               <h3 className="font-semibold text-lg mb-2">Our Newsletter</h3>
               <p className="text-gray-600 mb-4">Get the latest Update and enjoy the best.</p>
               <div className="relative w-full">
@@ -64,7 +64,7 @@ const homeSeventh = () => {
                   →
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </footer>
       );

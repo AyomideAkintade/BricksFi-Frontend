@@ -24,7 +24,6 @@ const Navbar = () => {
           <Link to="/" className="hover:text-[#E4AA15]">Home</Link>
           <Link to="/about" className="hover:text-[#E4AA15]">About</Link>
           <Link to="/services" className="hover:text-[#E4AA15]">Services</Link>
-          <Link to="/properties" className="hover:text-[#E4AA15]">Properties</Link>
         </div>
 
         {/* Light/Dark Mode Toggle and Launch App Button for Desktop */}

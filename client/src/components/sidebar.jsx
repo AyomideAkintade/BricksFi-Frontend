@@ -5,8 +5,8 @@ import { RiCompassDiscoverLine } from "react-icons/ri";
 import { GrFavorite } from "react-icons/gr";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { TfiWallet } from "react-icons/tfi";
-import { IoBulbSharp } from "react-icons/io5";
-import { IoMdSettings } from "react-icons/io";
+// import { IoBulbSharp } from "react-icons/io5";
+// import { IoMdSettings } from "react-icons/io";
 import BricksFi from "../assets/bricksfi.svg"
 import { FiLogOut } from 'react-icons/fi';
 import { BrCookies } from '../utils/storage/cookies';

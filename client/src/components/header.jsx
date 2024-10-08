@@ -1,8 +1,10 @@
 import React from 'react';
-import COCO from "../assets/clem.jpeg"
+// import COCO from "../assets/clem.jpeg"
 import { IoMdSearch } from "react-icons/io";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+// import { BiUserCircle } from 'react-icons/bi';
+import { CiUser } from 'react-icons/ci';
 
 const Header = () => {
   return (
@@ -19,19 +21,17 @@ const Header = () => {
       </div>
       </div>
       <div className="flex items-center space-x-4 w-fit">
-        <div className='w-[200px]'>
+        <div className='w'>
           <WalletMultiButton  />
         </div>
         <IoNotificationsOutline className="text-gray-700 text-2xl" />
-        <img
-          src={COCO}
-          alt="profile"
-          className="rounded-full h-10 w-10"
-        />
+        {/* <div className="p-2 border-[1px] border-black bg-gray-600 rounded-full text-white">
+          <CiUser className='text-[24px]' />
+        </div>
         <div className="">
           <span className="block text-sm font-medium">John Snow</span>
           <span className="block text-sm text-gray-500">Johnsnow@gmail.com</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

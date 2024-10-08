@@ -11,6 +11,7 @@ import useAPI from "../hooks/useApi";
 import { PublicKey } from "@solana/web3.js";
 import { BrCookies } from "../utils/storage/cookies";
 import { to2dp } from "../utils/to2dp";
+import { showErrorToast } from "../utils/toast";
 
 export default function DiscoverAsset(){
     const [asset, setAsset] = useState(null);
@@ -98,6 +99,7 @@ export default function DiscoverAsset(){
                     })
                 }).catch((error)=>{
                     console.error(error)
+                    showErrorToast(error.message)
                     reject();
                     throw error;
                 })
@@ -183,6 +185,7 @@ export default function DiscoverAsset(){
                     fetchAsset();
                 }).catch((error)=>{
                     console.error(error)
+                    showErrorToast(error.message)
                     reject();
                 })
                 .finally(()=>{
